@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Engineer Shagiz | AI Engineer & Full Stack Developer</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0c15;
+      color: #eef5ff;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Animated gradient background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(circle at 20% 30%, #0a0f2a, #020617);
+    }
+
+    .animated-bg::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: conic-gradient(from 0deg, #0ff1, #3a86ff1a, #b526ff1a, #0ff1);
+      animation: rotateBg 25s infinite linear;
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+    @keyframes rotateBg {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(0, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: floatParticle 15s infinite linear;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1.5rem 1.8rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.8rem 2rem;
+      border-radius: 3rem;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #aaffff, #3a86ff, #d43eff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #ccddf8;
+      text-decoration: none;
+      transition: 0.2s;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #0ff;
+      text-shadow: 0 0 8px cyan;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      margin-bottom: 5rem;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      background: rgba(0, 210, 255, 0.15);
+      border-left: 3px solid #0ff;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(125deg, #ffffff, #7ad0ff, #2b6ef0, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 3s infinite;
+      background-size: 200%;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #b9ceff;
+      margin-bottom: 1.8rem;
+      max-width: 550px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(95deg, #0ff, #3a86ff);
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      color: #0a0f1e;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #0ff;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #0ff;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(0, 255, 255, 0.15);
+      box-shadow: 0 0 12px cyan;
+    }
+
+    /* Animated Avatar */
+    .avatar-container {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+      perspective: 1000px;
+    }
+
+    .avatar-wrapper {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .avatar-canvas {
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.4), 0 20px 35px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s;
+      animation: float 4s ease-in-out infinite;
+      border: 2px solid rgba(0, 255, 255, 0.8);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotateY(0deg); }
+      50% { transform: translateY(-12px) rotateY(5deg); }
+    }
+
+    .avatar-label {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 5px 15px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: cyan;
+      white-space: nowrap;
+      border: 1px solid cyan;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      background: linear-gradient(120deg, #fff, #6bc6ff, #b77eff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-left: 4px solid #0ff;
+      padding-left: 1rem;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .skill-tag {
+      background: rgba(0, 255, 255, 0.08);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(0, 255, 255, 0.5);
+      padding: 0.7rem 1.6rem;
+      border-radius: 60px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .skill-tag i {
+      margin-right: 8px;
+      color: #0ff;
+    }
+
+    .skill-tag:hover {
+      background: rgba(0, 210, 255, 0.25);
+      transform: translateY(-3px);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .project-card-enhanced {
+      background: rgba(12, 22, 40, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 1.8rem;
+      overflow: hidden;
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      transition: all 0.3s;
+    }
+
+    .project-card-enhanced:hover {
+      transform: translateY(-10px);
+      border-color: #0ff;
+      box-shadow: 0 20px 30px -12px rgba(0, 255, 255, 0.3);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-description {
+      color: #b9ceff;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      background: rgba(0, 150, 255, 0.15);
+      border-radius: 20px;
+      padding: 0.25rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .social-icon {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #fff;
+      border: 1px solid rgba(0, 255, 255, 0.5);
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.15);
+      color: #0ff;
+      border-color: #0ff;
+      box-shadow: 0 0 20px cyan;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 700px;
+      margin: 2rem auto 0;
+      padding: 2rem;
+      border-radius: 2rem;
+      background: rgba(10, 20, 35, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 255, 255, 0.4);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: rgba(0, 10, 25, 0.8);
+      border: 1px solid #2c4b7c;
+      padding: 0.9rem 1.2rem;
+      border-radius: 1.2rem;
+      color: white;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #0ff;
+      box-shadow: 0 0 8px cyan;
+    }
+
+    .contact-form button {
+      background: linear-gradient(95deg, #0ff, #3a86ff);
+      border: none;
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .contact-form button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem;
+      border-top: 1px solid rgba(0, 255, 255, 0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .cta-buttons {
+        justify-content: center;
+      }
+      .avatar-wrapper {
+        width: 240px;
+        height: 240px;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .navbar {
+        flex-direction: column;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">⚡ Shagiz<span style="color:#0ff;">_AI</span></div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="badge">
+          <i class="fas fa-brain"></i> AI ENGINEER · FULL STACK ARCHITECT
+        </div>
+        <h1>Engineer <span class="gradient-text">Shagiz</span></h1>
+        <p>Building intelligent systems & scalable full-stack applications. AI-driven future, deployed today with cutting-edge neural architectures.</p>
+        <div class="cta-buttons">
+          <button class="btn-primary" id="contactBtn">
+            <i class="fas fa-paper-plane"></i> Contact Me
+          </button>
+          <button class="btn-outline" onclick="window.open('https://github.com/shagiz-ai', '_blank')">
+            <i class="fab fa-github"></i> GitHub
+          </button>
+        </div>
+      </div>
+      
+      <!-- Animated Avatar -->
+      <div class="avatar-container">
+        <div class="avatar-wrapper">
+          <canvas id="avatarCanvas" class="avatar-canvas" width="500" height="500"></canvas>
+          <div class="avatar-label">
+            <i class="fas fa-microchip"></i> AI Avatar · Neural Core
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skills">
+      <h2 class="section-title"><i class="fas fa-cogs"></i> Technical Arsenal</h2>
+      <div class="skills-grid" id="skillsList"></div>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects" style="margin-top: 3rem;">
+      <h2 class="section-title"><i class="fas fa-code-branch"></i> Featured Innovations</h2>
+      <div class="projects-grid" id="projectsContainer"></div>
+    </div>
+
+    <!-- Social Links Section -->
+    <div style="margin-top: 3rem;">
+      <h2 class="section-title"><i class="fas fa-share-alt"></i> Digital Footprint</h2>
+      <div class="social-links" id="socialLinks"></div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" style="margin-top: 3rem;">
+      <h2 class="section-title"><i class="fas fa-envelope"></i> Let's Connect</h2>
+      <div class="contact-form">
+        <form id="portfolioContactForm">
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Email address" required>
+          </div>
+          <div class="form-group">
+            <textarea rows="4" id="message" name="message" placeholder="Your message... AI collaboration, full-stack project, or just say hi"></textarea>
+          </div>
+          <button type="submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+        <p id="formFeedback" style="margin-top: 1rem; text-align: center; font-size: 0.85rem;"></p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <i class="fas fa-microchip"></i> Engineer Shagiz — AI & Full Stack Ecosystem • Building the Future
+    </footer>
+  </div>
+
+  <script>
+    // ==================== DATA ====================
+    
+    // Skills Data
+    const skillsList = [
+      { name: "Python / FastAPI", icon: "fab fa-python" },
+      { name: "TensorFlow / PyTorch", icon: "fas fa-brain" },
+      { name: "React / Next.js", icon: "fab fa-react" },
+      { name: "Node.js / Express", icon: "fab fa-node-js" },
+      { name: "LangChain / LLMs", icon: "fas fa-robot" },
+      { name: "Docker / Kubernetes", icon: "fab fa-docker" },
+      { name: "MongoDB / PostgreSQL", icon: "fas fa-database" },
+      { name: "GraphQL / REST", icon: "fas fa-cloud" },
+      { name: "Generative AI", icon: "fas fa-sparkles" },
+      { name: "AWS / Azure", icon: "fab fa-aws" }
+    ];
+
+    // Projects Data
+    const projectsData = [
+      {
+        title: 'NeuroForge AI',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop',
+        description: 'Advanced autonomous AI agent platform with vector memory, intelligent orchestration, and real-time analytics.',
+        tags: ['AI', 'FastAPI', 'LangChain']
+      },
+      {
+        title: 'OmniStack Cortex',
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+        description: 'Modern AI dashboard with predictive analytics, anomaly detection, and real-time monitoring.',
+        tags: ['React', 'TensorFlow', 'Node.js']
+      },
+      {
+        title: 'LLM Studio',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+        description: 'Interactive platform for fine-tuning open-source LLMs with LoRA and Hugging Face transformers.',
+        tags: ['PyTorch', 'LLMs', 'Transformers']
+      }
+    ];
+
+    // Social Profiles
+    const socialProfiles = [
+      { name: "GitHub", url: "https://github.com/shagiz-ai", icon: "fab fa-github" },
+      { name: "LinkedIn", url: "https://linkedin.com/in/engineer-shagiz", icon: "fab fa-linkedin-in" },
+      { name: "Twitter", url: "https://twitter.com/shagiz_ai", icon: "fab fa-twitter" },
+      { name: "YouTube", url: "https://youtube.com/@shagiz-ai", icon: "fab fa-youtube" },
+      { name: "Instagram", url: "https://instagram.com/shagiz_ai", icon: "fab fa-instagram" },
+      { name: "Dev.to", url: "https://dev.to/shagiz", icon: "fab fa-dev" },
+      { name: "Portfolio", url: "https://shagiz-ai.vercel.app", icon: "fas fa-globe" }
+    ];
+
+    // ==================== RENDER FUNCTIONS ====================
+    
+    function renderSkills() {
+      const container = document.getElementById('skillsList');
+      if (!container) return;
+      container.innerHTML = '';
+      skillsList.forEach(skill => {
+        const tag = document.createElement('div');
+        tag.className = 'skill-tag';
+        tag.innerHTML = `<i class="${skill.icon}"></i> ${skill.name}`;
+        container.appendChild(tag);
+      });
+    }
+
+    function renderProjects() {
+      const container = document.getElementById('projectsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      projectsData.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'project-card-enhanced';
+        card.innerHTML = `
+          <img class="project-image" src="${project.image}" alt="${project.title}" loading="lazy">
+          <div class="project-content">
+            <h3 class="project-title">${project.title}</h3>
+            <p class="project-description">${project.description}</p>
+            <div class="project-tags">
+              ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderSocialLinks() {
+      const container = document.getElementById('socialLinks');
+      if (!container) return;
+      container.innerHTML = '';
+      socialProfiles.forEach(social => {
+        const link = document.createElement('a');
+        link.href = social.url;
+        link.target = "_blank";
+        link.className = "social-icon";
+        link.innerHTML = `<i class="${social.icon}"></i>`;
+        link.setAttribute("aria-label", social.name);
+        container.appendChild(link);
+      });
+    }
+
+    // ==================== ANIMATED AVATAR ====================
+    
+    function initAnimatedAvatar() {
+      const canvas = document.getElementById('avatarCanvas');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      let width = 500, height = 500;
+      canvas.width = width;
+      canvas.height = height;
+      
+      let angle = 0;
+      let particles = [];
+      
+      // Create particles
+      for (let i = 0; i < 200; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 2 + 1,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          color: `hsl(${Math.random() * 60 + 170}, 100%, 60%)`
+        });
+      }
+      
+      function draw() {
+        if (!ctx) return;
+        
+        // Clear canvas with gradient background
+        const grad = ctx.createLinearGradient(0, 0, width, height);
+        grad.addColorStop(0, '#0a1a3a');
+        grad.addColorStop(1, '#020514');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(width/2, height/2, width/2, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Draw outer rings
+        angle += 0.02;
+        for (let i = 0; i < 3; i++) {
+          ctx.beginPath();
+          const radius = 120 + i * 30 + Math.sin(angle) * 8;
+          ctx.arc(width/2, height/2, radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(0, 200, 255, ${0.3 - i * 0.1})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+        
+        // Draw particles
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.shadowBlur = 5;
+          ctx.shadowColor = "#0ff";
+          ctx.fill();
+        });
+        
+        // Draw neural connections
+        for (let i = 0; i < 60; i++) {
+          const rad = (i / 60) * Math.PI * 2 + angle;
+          const x1 = width/2 + Math.cos(rad) * 100;
+          const y1 = height/2 + Math.sin(rad) * 100;
+          const x2 = width/2 + Math.cos(rad + 0.5) * 140;
+          const y2 = height/2 + Math.sin(rad + 0.5) * 140;
+          
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.strokeStyle = `rgba(0, 210, 255, ${0.2 + Math.sin(angle + rad) * 0.1})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+        
+        // Draw core
+        const pulse = Math.sin(angle * 5) * 0.15 + 0.6;
+        ctx.shadowBlur = 20;
+        ctx.beginPath();
+        ctx.arc(width/2, height/2, 55, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 150, 255, ${0.3 + pulse})`;
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(width/2, height/2, 40, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 220, 255, 0.9)`;
+        ctx.fill();
+        
+        // Draw central AI symbol
+        ctx.font = `bold ${width * 0.22}px "Inter"`;
+        ctx.fillStyle = "white";
+        ctx.shadowBlur = 15;
+        ctx.fillText("⚡", width/2 - 32, height/2 + 25);
+        
+        ctx.font = `bold 13px monospace`;
+        ctx.fillStyle = "#0ff";
+        ctx.fillText("AI CORE", width/2 - 36, height/2 + 60);
+        
+        requestAnimationFrame(draw);
+      }
+      
+      draw();
+    }
+
+    // ==================== FLOATING PARTICLES ====================
+    
+    function createFloatingParticles() {
+      const container = document.getElementById('particles');
+      if (!container) return;
+      
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const size = Math.random() * 3 + 1;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+        particle.style.opacity = Math.random() * 0.5;
+        container.appendChild(particle);
+      }
+    }
+
+    // ==================== CONTACT FORM HANDLER ====================
+    
+    function initContactForm() {
+      const form = document.getElementById('portfolioContactForm');
+      if (!form) return;
+      
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const feedback = document.getElementById('formFeedback');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        // Validation
+        if (!name || !email || !message) {
+          feedback.innerHTML = '❌ Please fill all fields.';
+          feedback.style.color = '#ffaa88';
+          setTimeout(() => feedback.innerHTML = '', 3000);
+          return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          feedback.innerHTML = '⚠️ Please enter a valid email address.';
+          feedback.style.color = '#ffaa88';
+          return;
+        }
+        
+        // Disable button and show loading
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+        
+        // Simulate API call (since no backend, just show success)
+        setTimeout(() => {
+          feedback.innerHTML = '✨ Message sent! Engineer Shagiz will respond within 24 hours. ✨';
+          feedback.style.color = '#0ff';
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+          
+          setTimeout(() => {
+            feedback.innerHTML = '';
+          }, 5000);
+        }, 1000);
+      });
+    }
+
+    // ==================== SCROLL FUNCTION ====================
+    
+    function scrollToContact() {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ==================== INITIALIZATION ====================
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSkills();
+      renderProjects();
+      renderSocialLinks();
+      initContactForm();
+      initAnimatedAvatar();
+      createFloatingParticles();
+      
+      // Attach scroll function to button
+      const contactBtn = document.getElementById('contactBtn');
+      if (contactBtn) {
+        contactBtn.addEventListener('click', scrollToContact);
+      }
+    });
+  </script>
+</body>
+</html>
